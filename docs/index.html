@@ -3,711 +3,98 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>설악 그란폰도 208K · 8시간 공략 로드북</title>
+<title>Team Inscyd · 라이딩 가이드</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
 :root{
-  --ink:#0F1D1F; --ink2:#152729; --card:#1A3033; --card2:#20393C;
-  --line:#2C474B; --line2:#3A595D; --text:#ECE7D9; --muted:#90A4A1;
-  --kom:#E5484D; --teal:#34B3AA; --gold:#F2B544; --sky:#6FB3D6;
-  --maxw:1080px;
+  --ink:#0F1D1F; --ink2:#152729; --card:#1A3033; --line:#2C474B; --line2:#3A595D;
+  --text:#ECE7D9; --muted:#90A4A1; --kom:#E5484D; --teal:#34B3AA; --gold:#F2B544;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
 body{
-  background:var(--ink); color:var(--text);
-  font-family:'Pretendard','Barlow',system-ui,sans-serif;
-  font-size:15px; line-height:1.6; -webkit-font-smoothing:antialiased;
-  background-image:radial-gradient(1200px 600px at 80% -10%, #1c3a3d55, transparent 60%);
+  background:var(--ink);color:var(--text);min-height:100vh;
+  font-family:'Pretendard','Barlow',system-ui,sans-serif;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(1200px 600px at 80% -10%, #1c3a3d66, transparent 60%);
 }
-.disp{font-family:'Barlow Condensed','Pretendard',sans-serif; letter-spacing:.01em}
-h1,h2,h3{font-family:'Barlow Condensed','Pretendard',sans-serif; font-weight:700; line-height:1.1}
-.wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px}
-a{color:var(--teal)}
-
-/* top bar */
-header.top{position:sticky;top:0;z-index:50;background:#0e1c1ee6;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.brand{display:flex;align-items:center;gap:14px;padding:14px 20px;max-width:var(--maxw);margin:0 auto}
-.brand .mark{font-family:'Barlow Condensed';font-weight:700;font-size:22px;letter-spacing:.04em;color:var(--text)}
+.wrap{max-width:880px;margin:0 auto;padding:0 22px}
+h1,h2,h3{font-family:'Barlow Condensed','Pretendard',sans-serif;font-weight:700;line-height:1.08}
+header.top{border-bottom:1px solid var(--line);background:#0e1c1ecc;backdrop-filter:blur(10px)}
+.brand{display:flex;align-items:center;gap:14px;max-width:880px;margin:0 auto;padding:16px 22px}
+.brand .mark{font-family:'Barlow Condensed';font-weight:700;font-size:22px;letter-spacing:.04em}
 .brand .mark b{color:var(--kom)}
-.brand .sub{font-size:12px;color:var(--muted);border-left:1px solid var(--line2);padding-left:14px;letter-spacing:.02em}
-nav.tabs{display:flex;gap:2px;max-width:var(--maxw);margin:0 auto;padding:0 12px;overflow-x:auto}
-nav.tabs button{
-  background:none;border:0;color:var(--muted);font-family:'Barlow Condensed';font-weight:600;
-  font-size:15px;letter-spacing:.03em;padding:12px 16px;cursor:pointer;white-space:nowrap;
-  border-bottom:2px solid transparent;transition:.15s;display:flex;align-items:center;gap:8px}
-nav.tabs button .n{font-size:11px;color:var(--line2);font-weight:700}
-nav.tabs button:hover{color:var(--text)}
-nav.tabs button.active{color:var(--text);border-bottom-color:var(--kom)}
-nav.tabs button.active .n{color:var(--kom)}
-
-section.page{display:none;padding:34px 0 80px;animation:fade .35s ease}
-section.page.active{display:block}
-@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-
-.eyebrow{font-family:'Barlow Condensed';text-transform:uppercase;letter-spacing:.22em;font-size:12px;color:var(--kom);font-weight:600}
-.ptitle{font-size:38px;margin:6px 0 4px}
-.plead{color:var(--muted);max-width:62ch;margin-bottom:26px}
-
-.card{background:linear-gradient(180deg,var(--card),var(--ink2));border:1px solid var(--line);border-radius:14px;padding:22px}
-.card + .card{margin-top:18px}
-.grid{display:grid;gap:16px}
-.g2{grid-template-columns:1fr 1fr}
-.g3{grid-template-columns:repeat(3,1fr)}
-.g4{grid-template-columns:repeat(4,1fr)}
-@media(max-width:780px){.g2,.g3,.g4{grid-template-columns:1fr}}
-
-.sec-h{display:flex;align-items:baseline;gap:12px;margin:30px 0 14px}
-.sec-h h2{font-size:24px}
-.sec-h .tag{font-size:12px;color:var(--muted)}
-
-/* stat tiles */
-.stat{background:var(--ink2);border:1px solid var(--line);border-radius:12px;padding:16px}
-.stat .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.stat .v{font-family:'Barlow Condensed';font-weight:700;font-size:30px;line-height:1.1;margin-top:4px}
-.stat .v small{font-size:14px;color:var(--muted);font-weight:600}
-
-/* profile canvas */
-.profile-box{background:var(--ink2);border:1px solid var(--line);border-radius:14px;padding:14px 8px 6px}
-canvas{display:block;width:100%}
-.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--muted);padding:8px 12px 2px}
-.legend span{display:flex;align-items:center;gap:6px}
-.legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
-
-/* tables */
-table{width:100%;border-collapse:collapse;font-size:13.5px}
-th,td{padding:9px 10px;text-align:center;border-bottom:1px solid var(--line)}
-th{font-family:'Barlow Condensed';font-weight:600;letter-spacing:.04em;color:var(--muted);font-size:12px;text-transform:uppercase;background:var(--ink2);position:sticky;top:0}
-td.name{text-align:left;font-weight:600}
-tr.clm td{background:#2a1a1c33}
-tr.brk td{background:#1f2e2e;color:var(--gold);font-style:italic;font-size:12.5px}
-tr.fin td{background:#16302a;font-weight:700}
-.num{font-family:'Barlow Condensed';font-weight:600}
-.tbl-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
-
-/* badges */
-.badge{display:inline-block;font-family:'Barlow Condensed';font-weight:700;font-size:11px;letter-spacing:.05em;padding:2px 8px;border-radius:6px}
-.b-hc{background:var(--kom);color:#fff}
-.b-c2{background:#b5683b;color:#fff}
-.b-flat{background:#23474a;color:var(--teal)}
-.b-feed{background:var(--gold);color:#3a2a00}
-
-/* climb cards */
-.climb{display:flex;gap:0;flex-direction:column;background:var(--ink2);border:1px solid var(--line);border-radius:12px;overflow:hidden}
-.climb .top{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--line)}
-.climb .nm{font-family:'Barlow Condensed';font-weight:700;font-size:20px}
-.climb .body{padding:12px 16px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.climb .mini .k{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
-.climb .mini .vv{font-family:'Barlow Condensed';font-weight:700;font-size:19px}
-.climb .note{padding:0 16px 14px;color:var(--muted);font-size:13px}
-
-/* controls */
-.ctrl{display:flex;flex-direction:column;gap:6px}
-.ctrl label{font-size:13px;color:var(--muted);display:flex;justify-content:space-between}
-.ctrl label b{color:var(--text);font-family:'Barlow Condensed';font-size:17px}
-input[type=range]{-webkit-appearance:none;height:6px;border-radius:4px;background:var(--line2);outline:none}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--kom);cursor:pointer;border:2px solid #fff2}
-input[type=range]::-moz-range-thumb{width:18px;height:18px;border:none;border-radius:50%;background:var(--kom);cursor:pointer}
-input[type=number]{width:90px;background:var(--ink);border:1px solid var(--line2);color:var(--text);border-radius:8px;padding:7px 10px;font-family:'Barlow Condensed';font-size:16px}
-.ctrl.key label b{color:var(--kom)}
-.kpill{font-family:'Barlow Condensed';font-weight:700;font-size:10px;letter-spacing:.06em;background:var(--kom);color:#fff;padding:1px 7px;border-radius:5px;margin-left:7px;vertical-align:middle}
-.seg-toggle{display:flex;gap:0;border:1px solid var(--line2);border-radius:9px;overflow:hidden;width:max-content}
-.seg-toggle button{background:var(--ink);border:0;color:var(--muted);padding:7px 14px;cursor:pointer;font-family:'Barlow Condensed';font-weight:600;font-size:14px}
-.seg-toggle button.on{background:var(--kom);color:#fff}
-
-/* big readout */
-.readout{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
-.readout .big{font-family:'Barlow Condensed';font-weight:700;font-size:64px;line-height:.95}
-.verdict{font-family:'Barlow Condensed';font-weight:700;font-size:16px;padding:5px 14px;border-radius:9px}
-.v-ok{background:#16302a;color:var(--teal)}
-.v-warn{background:#3a2a00;color:var(--gold)}
-.v-bad{background:#3a1517;color:var(--kom)}
-
-ul.clean{list-style:none;display:flex;flex-direction:column;gap:9px}
-ul.clean li{padding-left:20px;position:relative;color:var(--text)}
-ul.clean li:before{content:"";position:absolute;left:2px;top:9px;width:7px;height:7px;border-radius:2px;background:var(--teal);transform:rotate(45deg)}
-ul.clean li.warn:before{background:var(--kom)}
-ul.clean li b{color:var(--gold)}
-
-.fuel-row{display:grid;grid-template-columns:120px 1fr;gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}
-.fuel-row:last-child{border-bottom:0}
-.fuel-row .when{font-family:'Barlow Condensed';font-weight:700;color:var(--gold);font-size:16px}
-.kicker{font-size:12px;color:var(--muted);margin-top:18px;line-height:1.5}
-.src{font-size:11px;color:var(--line2);margin-top:6px}
-.pill{display:inline-block;background:var(--ink2);border:1px solid var(--line);border-radius:999px;padding:3px 11px;font-size:12px;color:var(--muted);margin:3px 4px 0 0}
-.foot{border-top:1px solid var(--line);margin-top:40px;padding:22px 0;color:var(--muted);font-size:12.5px}
+.brand .sub{font-size:12px;color:var(--muted);border-left:1px solid var(--line2);padding-left:14px}
+.hero{padding:54px 0 30px}
+.eyebrow{font-family:'Barlow Condensed';text-transform:uppercase;letter-spacing:.24em;font-size:12px;color:var(--kom);font-weight:600}
+.hero h1{font-size:46px;margin:8px 0 10px}
+.hero p{color:var(--muted);max-width:60ch}
+.sec{font-family:'Barlow Condensed';text-transform:uppercase;letter-spacing:.14em;font-size:13px;color:var(--muted);margin:26px 0 14px;display:flex;align-items:center;gap:12px}
+.sec:after{content:"";flex:1;height:1px;background:var(--line)}
+a.card{
+  display:block;text-decoration:none;color:inherit;
+  background:linear-gradient(180deg,var(--card),var(--ink2));
+  border:1px solid var(--line);border-radius:16px;padding:24px;margin-bottom:16px;
+  transition:.18s;position:relative;overflow:hidden;
+}
+a.card:hover{border-color:var(--kom);transform:translateY(-2px);box-shadow:0 14px 40px #0006}
+a.card .badge{font-family:'Barlow Condensed';font-weight:700;font-size:11px;letter-spacing:.06em;
+  background:var(--kom);color:#fff;padding:2px 9px;border-radius:6px;display:inline-block;margin-bottom:12px}
+a.card h2{font-size:27px;margin-bottom:6px}
+a.card .desc{color:var(--muted);font-size:14.5px;max-width:60ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.pill{font-size:12px;color:var(--muted);background:var(--ink);border:1px solid var(--line);border-radius:999px;padding:4px 12px}
+.stats{display:flex;gap:26px;margin-top:18px;flex-wrap:wrap}
+.stats div span{display:block}
+.stats .v{font-family:'Barlow Condensed';font-weight:700;font-size:26px}
+.stats .k{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.go{position:absolute;right:22px;top:24px;font-family:'Barlow Condensed';font-weight:700;color:var(--teal);font-size:14px}
+.foot{border-top:1px solid var(--line);margin-top:46px;padding:22px 0;color:var(--muted);font-size:12.5px}
 </style>
 </head>
 <body>
 <header class="top">
   <div class="brand">
-    <div class="mark">설악 그란폰도 <b>208K</b></div>
-    <div class="sub">SUB-8H 공략 로드북 · Team Inscyd · 작성 크롬</div>
+    <div class="mark">Team <b>Inscyd</b></div>
+    <div class="sub">라이딩 공략 가이드 · 작성 크롬</div>
   </div>
-  <nav class="tabs" id="tabs">
-    <button data-p="0" class="active"><span class="n">01</span>준비 &amp; 코스</button>
-    <button data-p="1"><span class="n">02</span>공략 &amp; 보급</button>
-    <button data-p="2"><span class="n">03</span>퍼포먼스 시뮬레이터</button>
-    <button data-p="3"><span class="n">04</span>타임 → 파워가이드</button>
-    <button data-p="4"><span class="n">05</span>8시간 구간표</button>
-  </nav>
 </header>
 
-<!-- ===================== PAGE 1 ===================== -->
-<section class="page active" id="p0"><div class="wrap">
-  <div class="eyebrow">ROADBOOK · STAGE PROFILE</div>
-  <h1 class="ptitle">208km · 누적 3,700m · 8시간 안에</h1>
-  <p class="plead">강원도 인제·양양을 잇는 설악 그란폰도. 6개의 고개와 110km의 평지, 그리고 단 한 번의 본격 휴식으로 완성되는 코스입니다. 아래 프로파일이 하루 전체의 지도입니다.</p>
+<div class="wrap">
+  <div class="hero">
+    <div class="eyebrow">Riding Guides</div>
+    <h1>대회 공략 로드북</h1>
+    <p>FIT 실주행·INSCYD 분석·코스 데이터를 엮어 만든 페이싱 가이드 모음입니다. 아래에서 대회를 선택하세요.</p>
+  </div>
 
-  <div class="profile-box">
-    <canvas id="profMain" height="300"></canvas>
-    <div class="legend">
-      <span><i style="background:var(--kom)"></i>업힐 (6개)</span>
-      <span><i style="background:var(--teal)"></i>평지·다운힐</span>
-      <span><i style="background:var(--gold)"></i>보급소 / 컷오프</span>
-      <span style="color:var(--muted)">HC = 최고난도(역구룡령) · 점선 = 컷오프 시각</span>
+  <div class="sec">공개 가이드</div>
+
+  <a class="card" href="seorak_guide.html">
+    <span class="go">열기 &rarr;</span>
+    <span class="badge">SUB-8H</span>
+    <h2>설악 그란폰도 208K</h2>
+    <div class="desc">8시간 완주를 위한 준비·라이딩·보급 전략과, FTP/체중/VO2max로 완주 시각을 추정하는 시뮬레이터, 목표 시간으로 보는 구간별 파워 가이드까지.</div>
+    <div class="stats">
+      <div><span class="v">208<small style="font-size:13px"> km</small></span><span class="k">거리</span></div>
+      <div><span class="v">3,700<small style="font-size:13px"> m</small></span><span class="k">누적상승</span></div>
+      <div><span class="v">6<small style="font-size:13px"> 개</small></span><span class="k">고개</span></div>
+      <div><span class="v">5<small style="font-size:13px"> 페이지</small></span><span class="k">시뮬레이터 포함</span></div>
     </div>
-  </div>
-
-  <div class="grid g4" style="margin-top:18px">
-    <div class="stat"><div class="k">총 거리</div><div class="v">208<small> km</small></div></div>
-    <div class="stat"><div class="k">총 상승</div><div class="v">3,700<small> m</small></div></div>
-    <div class="stat"><div class="k">고개</div><div class="v">6<small> 개</small></div></div>
-    <div class="stat"><div class="k">평지 구간</div><div class="v">110<small> km</small></div></div>
-  </div>
-
-  <div class="sec-h"><h2>6개의 고개를 외운다</h2><span class="tag">살둔재 · 구룡령 · 조침령 · 쓰리재 · 한계령 · 역구룡령</span></div>
-  <div class="grid g3" id="climbCards"></div>
-
-  <div class="sec-h"><h2>출발 전 준비</h2><span class="tag">Notion 준비 노트 기준</span></div>
-  <div class="grid g2">
-    <div class="card">
-      <h3 style="font-size:18px;margin-bottom:10px">기기 · 경로</h3>
-      <ul class="clean">
-        <li>가민/속도계에 <b>TCX 경로</b> 사전 탑재 (ridingazua 109861) — 팩 커뮤니케이션용으로 전원 필수</li>
-        <li>가민 <b>라이브트랙 자동시작</b> ON, 카톡 "설악방" 알림 ON</li>
-        <li>출발 <b>30분 전</b> 출발선 도착해 줄서기, 최대한 앞·선두팩에 합류</li>
-        <li>출발선에서 타이어 공기압 / 체인 / 브레이크 최종 점검</li>
-      </ul>
+    <div class="meta">
+      <span class="pill">준비 &amp; 코스</span><span class="pill">공략 &amp; 보급</span>
+      <span class="pill">퍼포먼스 시뮬레이터</span><span class="pill">타임 &rarr; 파워가이드</span>
+      <span class="pill">8시간 구간표</span>
     </div>
-    <div class="card">
-      <h3 style="font-size:18px;margin-bottom:10px">장비 세팅</h3>
-      <ul class="clean">
-        <li><b>3.5 w/kg 이하</b>라면 컴팩 크랭크 + <b>32T 이상</b> 스프라켓 — 고각(조침령)에서 케이던스 70+ 확보</li>
-        <li>로우림보다 <b>미들림</b> 권장 (장거리 안정성)</li>
-        <li>9명 기준 공구 분담: 체인툴·멀티툴·CO2·튜브·지렁이 역할 분배</li>
-        <li>스페셜 보급지 맡길 물품 미리 패킹 (파워젤 6개 · 죽/단팥죽 · 이온가루 등)</li>
-      </ul>
-    </div>
+  </a>
+
+  <!-- 새 가이드는 위 <a class="card"> 블록을 복사해 href와 제목만 바꿔 추가하세요 -->
+
+  <div class="foot">
+    Team Inscyd · 작성 크롬 &mdash; Notion 준비노트 · 2024 실주행(FIT) · ridingazua 코스(TCX) · 시간표(XLSX) 종합.
+    가이드의 시뮬레이터 수치는 추정이며 컨디션·날씨·팩 상황에 따라 달라집니다.
   </div>
-  <p class="src">출처: Notion「2024 설악그란폰도 with INSCYD」준비 노트 + ridingazua 109861 코스(TCX)</p>
-</div></section>
-
-<!-- ===================== PAGE 2 ===================== -->
-<section class="page" id="p1"><div class="wrap">
-  <div class="eyebrow">RACE STRATEGY · INSCYD</div>
-  <h1 class="ptitle">어떻게 달릴 것인가</h1>
-  <p class="plead">8시간의 핵심은 강함이 아니라 <b style="color:var(--gold)">절제</b>입니다. 초반에 아낀 성냥개비를 역구룡령에서 태웁니다.</p>
-
-  <div class="grid g3">
-    <div class="stat"><div class="k">업힐 강도</div><div class="v">75–90<small>% FTP</small></div></div>
-    <div class="stat"><div class="k">총 휴식</div><div class="v">≤20<small> 분</small></div></div>
-    <div class="stat"><div class="k">목표 평속</div><div class="v">26.7<small> km/h</small></div></div>
-  </div>
-
-  <div class="sec-h"><h2>황금률 5가지</h2></div>
-  <div class="card">
-    <ul class="clean">
-      <li class="warn"><b>인터벌 금지.</b> 초반 빠른 팩 쫓다 역치 위로 치면 후반에 <b>30–50분</b>을 잃습니다. 하더라도 90–105% 이내.</li>
-      <li><b>업힐은 항상 75–90% FTP.</b> 아무리 좋은 팩이어도 고개에서는 내 강도로. 가이드 파워: 초반 3.7 → 중반 3.2 → 후반 3.0 w/kg.</li>
-      <li><b>고각은 케이던스.</b> 조침령(10.4%)·무명고개(8.3%)는 70rpm 이상 유지되는 기어로.</li>
-      <li><b>다운힐은 욕심내지 않는다.</b> 구룡령·한계령 다운힐 전체 기록차는 최대 20분뿐 — 무리한 리스크 대비 보상이 작습니다.</li>
-      <li><b>글리코겐 관리가 전부.</b> 근육 글리코겐은 회복에 24시간. FTP 근처로 갈수록 고갈 → 봉크. 혈중 글리코겐은 30분 내 보급으로 채웁니다.</li>
-    </ul>
-  </div>
-
-  <div class="sec-h"><h2>구간별 라이딩</h2><span class="tag">팩라이딩 가이드</span></div>
-  <div class="grid g2">
-    <div class="card">
-      <h3 style="font-size:17px;margin-bottom:8px;color:var(--teal)">전반 (출발 ~ 쓰리재, 88km)</h3>
-      <ul class="clean">
-        <li>출발은 <b>존2</b>로, 팩 형성될 때까지 유지 → 이후 존3 항속</li>
-        <li>살둔재까지 38km는 약한 업힐 = 사실상 평지 페이스 (3.6~3.7 w/kg 템포)</li>
-        <li>구룡령(3.5)·조침령(3.3)·쓰리재(3.2)는 가이드 파워 상한선을 넘기지 말 것</li>
-        <li>정상 보급소는 <b>5분 이내</b>, 대기 없이 다운힐 진입</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3 style="font-size:17px;margin-bottom:8px;color:var(--kom)">후반 (한계령 ~ 도착, 120km)</h3>
-      <ul class="clean">
-        <li>스페셜 보급소(104km)에서 <b>15분</b> 본격 정비 — 하루 유일한 긴 휴식</li>
-        <li>한계령(2.9)은 존2~서브역치, 무리 금지</li>
-        <li class="warn"><b>역구룡령(20.4km, HC)이 승부처.</b> 여기서 힘이 남도록 앞에서 아낀다. 남았다면 2.9 이상으로 밀어도 OK</li>
-        <li>역구룡령 정상(163km) 이후 47km는 대부분 다운힐+평지 — 36km/h대로 회수</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="sec-h"><h2>보급 플랜</h2><span class="tag">탄수화물은 섭취 후 30분 내 로딩</span></div>
-  <div class="card">
-    <div class="fuel-row"><div class="when">출발 전</div><div>소화 잘 되는 고형물 — 다이제스트·에너지바. 구룡령(출발 1시간)까지 버티는 연료.</div></div>
-    <div class="fuel-row"><div class="when">초반·구룡령</div><div>고형 보급(단백질/지방) + 영양갱 1개. 구룡령 정상에선 바나나만 챙겨 즉시 이동.</div></div>
-    <div class="fuel-row"><div class="when">중반</div><div>조침령 전 바나나 1개, 쓰리재 오르며 바나나·영양갱 (복합 당류).</div></div>
-    <div class="fuel-row"><div class="when">스페셜(104km)</div><div>후반용 <b>파워젤 6개</b> 수령. 단팥죽·말린 소고기·이온가루로 본격 충전.</div></div>
-    <div class="fuel-row"><div class="when">중후반</div><div>역구룡령 전까지 파워젤 위주 ≈6개(개당 120kcal). 후반엔 당류 흡수가 떨어져 스포츠음료 비중↑.</div></div>
-    <div class="fuel-row"><div class="when">역구룡령 보급</div><div>이온음료·물에 타먹는 정제. 이후 여분 파워젤 1–2개로 마무리.</div></div>
-  </div>
-  <p class="kicker">휴식 원칙: 2시간에 한 번 5분 내외. 긴 휴식이 필요하다는 건 글리코겐 고갈(봉크) 신호 — 무리한 인터벌만 없으면 긴 휴식은 필요 없습니다.</p>
-  <p class="src">출처: Notion「설악 전략 from 라이덕」·「인싸트레인 팩라이딩」(INSCYD 분석 기반)</p>
-</div></section>
-
-<!-- ===================== PAGE 3 ===================== -->
-<section class="page" id="p2"><div class="wrap">
-  <div class="eyebrow">SIMULATOR · MY ENGINE → TIME</div>
-  <h1 class="ptitle">내 퍼포먼스로 보는 완주 시간</h1>
-  <p class="plead"><b style="color:var(--kom)">FTP가 핵심 변수</b>입니다. 6개 고개를 물리 모델로 풀어 예상 완주 시각을 계산하며, 체중은 power-to-weight가 신뢰할 수 있는 <b>60–80kg</b> 구간에서만 다룹니다(그 밖은 등반 근사가 깨짐). 평지·다운힐은 팩 페이스(계획값)로 고정합니다.</p>
-
-  <div class="card">
-    <div class="grid g3">
-      <div class="ctrl key"><label>FTP <span class="kpill">핵심</span> <b><span id="ftpOut">273</span> W</b></label><input type="range" id="ftp" min="150" max="380" step="1" value="273"></div>
-      <div class="ctrl"><label>체중 <b><span id="wOut">68</span> kg</b></label><input type="range" id="w" min="60" max="80" step="0.5" value="68"></div>
-      <div class="ctrl"><label>VO2max <b><span id="voOut">64</span></b></label><input type="range" id="vo" min="40" max="75" step="1" value="64"></div>
-    </div>
-    <div class="grid g3" style="margin-top:16px">
-      <div class="ctrl"><label>총 휴식 <b><span id="restOut">24</span> 분</span></b></label><input type="range" id="rest" min="0" max="45" step="1" value="24"></div>
-      <div class="ctrl"><label>평지 팩 페이스 <b><span id="packOut">100</span> %</b></label><input type="range" id="pack" min="88" max="112" step="1" value="100"></div>
-      <div class="ctrl" style="justify-content:flex-end"><label style="color:var(--muted)">68kg·273W·VO2 64 = 2024 실측값</label><div style="font-size:12px;color:var(--line2)">슬라이더로 가정 변경</div></div>
-    </div>
-  </div>
-
-  <div class="card" style="margin-top:18px">
-    <div class="readout">
-      <div>
-        <div class="k" style="font-size:11px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase">예상 완주 시각</div>
-        <div class="big" id="finishBig">15:00</div>
-      </div>
-      <div>
-        <div class="k" style="font-size:11px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase">총 소요</div>
-        <div class="disp" style="font-size:30px;font-weight:700" id="totalBig">8:00</div>
-      </div>
-      <div id="verdict" class="verdict v-warn">목표까지 +7분</div>
-      <div style="flex:1"></div>
-      <div style="text-align:right">
-        <div class="k" style="font-size:11px;color:var(--muted)">FTP 대비 등반 강도(W/kg)</div>
-        <div class="disp" style="font-size:18px;color:var(--muted)"><span id="wkgAvg">3.2</span> w/kg 평균</div>
-      </div>
-    </div>
-    <canvas id="profSim" height="190" style="margin-top:14px"></canvas>
-  </div>
-
-  <div class="sec-h"><h2>고개별 예상</h2></div>
-  <div class="tbl-scroll"><table id="simTable"></table></div>
-  <p class="kicker">모델: 각 고개의 소요시간은 Team Inscyd 플랜의 <b>가이드 w/kg ↔ 통과시간</b> 관계에 앵커링합니다 — 내 등반 w/kg(=FTP×지속강도÷체중)이 가이드보다 높으면 그만큼 빨라지고, 낮으면 느려집니다(중력 지배 구간 근사). 지속강도(%FTP)는 고개 길이·순서로 차등하고 VO2max로 보정합니다. 평지·다운힐은 팩 페이스라 계획 속도에 페이스 슬라이더만 적용합니다. 기본값(68kg·273W·VO2 64)은 2024 실측 입력값이며, 이를 넣으면 고개별 실제 강도(구룡령 82%·조침령 90%·역구룡령 70% FTP)와 약 8시간(15:00 전후) 완주가 재현되도록 교정돼 있습니다. <b>FTP가 결과를 좌우하는 1차 변수</b>이고, 체중은 60–80kg 범위에서만 신뢰합니다 — 등반 시간이 power-to-weight(FTP÷체중)에 선형 반응하는 구간이기 때문입니다. 실제는 날씨·바람·팩 상황에 따라 달라집니다.</p>
-</div></section>
-
-<!-- ===================== PAGE 4 ===================== -->
-<section class="page" id="p3"><div class="wrap">
-  <div class="eyebrow">SIMULATOR · TARGET TIME → POWER</div>
-  <h1 class="ptitle">목표 시간으로 보는 파워 가이드</h1>
-  <p class="plead">완주 목표 시간을 정하면, 각 고개에서 <b>몇 W / 몇 w/kg</b>로 올라야 하는지 거꾸로 풀어줍니다. 빨간 배지는 현실적으로 무리한 강도라는 신호입니다.</p>
-
-  <div class="card">
-    <div class="grid g3">
-      <div class="ctrl"><label>목표 완주 <b><span id="tgtOut">8:00</span></b></label><input type="range" id="tgt" min="390" max="540" step="5" value="480"></div>
-      <div class="ctrl key"><label>FTP <span class="kpill">핵심</span> <b><span id="ftp2Out">273</span> W</b></label><input type="range" id="ftp2" min="150" max="380" step="1" value="273"></div>
-      <div class="ctrl"><label>체중 <b><span id="w2Out">68</span> kg</b></label><input type="range" id="w2" min="60" max="80" step="0.5" value="68"></div>
-    </div>
-    <div class="grid g2" style="margin-top:16px">
-      <div class="ctrl"><label>총 휴식 <b><span id="rest2Out">24</span> 분</b></label><input type="range" id="rest2" min="0" max="45" step="1" value="24"></div>
-      <div class="ctrl"><label>평지 팩 페이스 <b><span id="pack2Out">100</span> %</b></label><input type="range" id="pack2" min="88" max="112" step="1" value="100"></div>
-    </div>
-  </div>
-
-  <div class="card" style="margin-top:18px">
-    <div class="readout">
-      <div><div class="k" style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.14em">고개에 쓸 수 있는 총 시간</div><div class="big" id="climbBudget">3:48</div></div>
-      <div style="flex:1"></div>
-      <div id="feasBadge" class="verdict v-ok">달성 가능한 페이스</div>
-    </div>
-    <canvas id="profPow" height="190" style="margin-top:14px"></canvas>
-  </div>
-
-  <div class="sec-h"><h2>고개별 필요 파워</h2></div>
-  <div class="tbl-scroll"><table id="powTable"></table></div>
-  <p class="kicker">평지·다운힐 시간은 계획 페이스로 고정하고, 남는 시간을 고개에 계획 비율대로 분배해 필요 속도 → 필요 파워를 역산합니다. %FTP가 105%를 넘으면 무리, 60% 미만이면 더 여유 있게 가도 됩니다.</p>
-
-  <div class="sec-h"><h2>전 구간 페이스 가이드</h2><span class="tag">주요 웨이포인트 기준 · 엑셀 시간표</span></div>
-  <div class="tbl-scroll"><table id="powFullTable"></table></div>
-  <p class="kicker">평지 "필요파워"는 <b>단독 라이딩 기준 추정치</b>로, 팩 안에서 드래프팅하면 30~40% 덜 듭니다. 경사 −1.2% 아래 구간은 코스팅(다운힐)으로 표시합니다. 통과 시각은 07:00 출발 기준이며, 휴식은 구룡령·스페셜보급·역구룡령 정상에 계획 비율(5:15:5)대로 분배됩니다.</p>
-</div></section>
-
-<!-- ===================== PAGE 5 ===================== -->
-<section class="page" id="p4"><div class="wrap">
-  <div class="eyebrow">PACING SHEET · SUB-8H</div>
-  <h1 class="ptitle">8시간 구간표</h1>
-  <p class="plead">Team Inscyd가 짜둔 8시간 페이싱의 정본. 구간별 거리·경사·목표 평속·가이드 파워·통과 시각, 그리고 2024년 실주행 기록을 함께 봅니다.</p>
-
-  <div class="card" style="margin-bottom:18px">
-    <div class="ctrl" style="max-width:320px"><label>예상 파워 환산 체중 <b><span id="w3Out">68</span> kg</b></label><input type="range" id="w3" min="60" max="80" step="0.5" value="68"></div>
-    <div style="font-size:12px;color:var(--muted);margin-top:6px">w/kg 가이드를 위 체중 기준 W로 환산해 "예상 파워" 열에 표시합니다.</div>
-  </div>
-
-  <div class="tbl-scroll"><table id="planTable"></table></div>
-
-  <div class="grid g4" style="margin-top:18px">
-    <div class="stat"><div class="k">계획 완주</div><div class="v">15:00</div></div>
-    <div class="stat"><div class="k">2024 실제</div><div class="v">15:07</div></div>
-    <div class="stat"><div class="k">계획 총 휴식</div><div class="v">25<small> 분</small></div></div>
-    <div class="stat"><div class="k">2024 휴식</div><div class="v">~24<small> 분</small></div></div>
-  </div>
-  <p class="src">출처: 「2025 설악그란폰도 Team Inscyd」시간표 시트 + 2024 실주행 FIT 분석. 통과시각은 07:00 출발 기준.</p>
-</div></section>
-
-<div class="wrap foot">
-  설악 그란폰도 208K · SUB-8H 로드북 — Notion 준비노트 · 2024 실주행(FIT) · ridingazua 109861(TCX) · Team Inscyd 시간표(XLSX)를 종합. 작성 · 크롬. 시뮬레이터 수치는 추정이며 컨디션·날씨·팩 상황에 따라 달라집니다.
 </div>
-
-<script>
-const PROF = [[0.0,399],[0.48,398],[1.07,394],[1.45,390],[1.83,387],[2.32,381],[2.6,376],[3.25,372],[3.76,370],[4.22,364],[4.77,359],[5.25,356],[5.58,358],[6.22,363],[6.87,368],[7.36,375],[7.76,385],[8.04,386],[8.57,384],[9.0,389],[9.45,395],[9.92,398],[10.57,403],[11.22,407],[11.85,412],[12.37,420],[12.92,429],[13.4,432],[13.91,438],[14.28,450],[14.82,450],[15.54,452],[15.98,457],[16.51,459],[16.96,463],[17.53,465],[18.04,466],[18.73,485],[19.2,517],[19.48,546],[19.84,570],[20.2,570],[20.64,544],[20.94,518],[21.41,509],[21.87,510],[22.39,510],[22.91,516],[23.26,518],[23.64,524],[23.93,527],[24.72,527],[25.46,536],[25.89,543],[26.36,542],[26.83,541],[27.58,543],[28.27,549],[28.96,554],[29.47,558],[30.24,563],[30.78,567],[31.26,573],[31.96,579],[32.41,583],[32.91,587],[33.55,594],[34.14,600],[34.49,605],[35.12,618],[35.92,636],[36.54,636],[37.21,642],[37.86,674],[38.34,706],[38.76,730],[39.09,751],[39.42,770],[39.79,789],[40.1,810],[40.56,838],[41.03,869],[41.43,893],[41.76,910],[42.11,928],[42.53,951],[42.89,976],[43.34,999],[43.88,1007],[44.22,990],[44.61,964],[44.9,942],[45.36,917],[45.78,894],[46.19,869],[46.58,839],[47.07,812],[47.49,788],[47.94,766],[48.2,744],[48.57,724],[48.92,705],[49.26,682],[49.7,657],[50.0,631],[50.6,600],[50.97,576],[51.27,559],[51.64,541],[52.07,519],[52.42,494],[52.82,473],[53.2,456],[53.56,434],[53.99,409],[54.56,379],[55.37,351],[55.89,327],[56.65,300],[57.15,283],[57.59,272],[58.27,256],[59.15,239],[59.96,226],[60.6,215],[61.41,202],[62.04,191],[62.77,182],[63.38,174],[64.1,172],[64.39,199],[64.89,252],[65.34,305],[65.69,358],[66.16,400],[66.33,428],[66.64,458],[66.86,484],[67.18,509],[67.42,533],[67.75,563],[68.02,588],[68.32,603],[69.36,614],[69.89,615],[70.48,609],[71.07,601],[71.75,594],[72.25,589],[72.51,583],[72.96,574],[73.45,562],[73.92,556],[74.35,547],[74.81,535],[75.38,521],[75.86,522],[76.33,547],[76.58,559],[76.95,544],[77.19,526],[77.46,508],[77.86,491],[78.36,475],[78.87,456],[79.45,446],[79.78,440],[80.28,432],[80.78,424],[81.22,416],[81.58,415],[82.3,426],[83.16,446],[83.91,467],[84.54,488],[85.22,510],[85.85,538],[86.33,577],[86.9,627],[87.4,678],[87.73,710],[88.02,715],[88.52,690],[88.9,655],[89.33,615],[89.64,575],[90.25,520],[90.79,469],[91.39,439],[92.08,417],[92.69,398],[93.49,390],[94.27,413],[94.91,461],[95.35,499],[95.83,499],[96.48,478],[97.21,459],[98.01,431],[98.63,422],[99.24,433],[99.9,449],[100.6,470],[101.3,488],[102.1,502],[102.93,517],[103.64,540],[104.26,556],[104.91,569],[105.73,590],[106.54,619],[107.3,656],[107.95,708],[108.67,779],[109.22,846],[109.63,874],[109.86,864],[110.05,846],[110.38,833],[110.61,817],[110.87,796],[111.19,776],[111.55,754],[111.94,730],[112.15,707],[112.48,683],[112.69,654],[113.13,623],[113.37,599],[113.73,580],[113.98,568],[114.2,557],[114.62,538],[114.94,517],[115.26,498],[115.68,485],[116.16,475],[116.45,462],[116.73,446],[117.13,432],[117.45,412],[117.74,382],[118.24,347],[118.77,319],[119.35,301],[120.1,283],[120.87,264],[121.28,250],[121.97,243],[122.52,243],[123.08,226],[123.74,203],[124.3,182],[124.99,163],[125.67,149],[126.39,140],[127.04,146],[127.27,157],[127.9,144],[129.3,106],[130.08,69],[130.48,58],[130.93,74],[131.59,92],[132.01,98],[132.47,81],[133.08,67],[133.76,70],[134.15,86],[134.62,112],[135.06,135],[135.6,145],[135.95,154],[136.44,176],[136.75,183],[137.16,166],[137.75,141],[138.44,140],[138.86,158],[139.38,165],[139.9,158],[140.37,156],[140.85,160],[141.42,166],[142.16,174],[142.78,183],[143.51,191],[144.14,202],[144.94,215],[145.59,226],[146.39,239],[147.28,256],[147.95,272],[148.4,283],[148.9,300],[149.66,328],[150.17,351],[150.98,379],[151.56,409],[151.98,434],[152.34,456],[152.72,473],[153.13,494],[153.47,519],[153.9,541],[154.27,560],[154.57,576],[154.94,601],[155.55,632],[155.84,657],[156.28,683],[156.63,705],[156.97,724],[157.27,744],[157.61,766],[158.05,788],[158.48,813],[158.96,839],[159.35,869],[159.76,894],[160.18,917],[160.64,942],[160.93,965],[161.33,990],[161.66,1007],[162.27,997],[162.68,973],[163.07,949],[163.46,926],[163.8,908],[164.13,891],[164.57,866],[165.07,835],[165.46,807],[165.81,787],[166.17,768],[166.47,749],[166.82,727],[167.25,703],[167.72,671],[168.39,640],[169.02,636],[169.71,635],[170.47,616],[171.12,605],[171.52,599],[172.11,592],[172.7,586],[173.21,582],[173.62,579],[174.34,573],[174.85,567],[175.4,562],[176.11,558],[176.68,554],[177.36,548],[178.02,543],[178.81,541],[179.21,542],[179.73,543],[180.25,533],[180.98,526],[181.66,528],[181.97,523],[182.46,518],[182.83,514],[183.23,510],[183.81,510],[184.28,509],[184.66,522],[185.02,550],[185.45,573],[185.72,566],[186.1,541],[186.47,511],[187.0,480],[187.63,465],[188.07,465],[188.7,462],[189.08,459],[189.71,456],[190.15,451],[190.86,451],[191.34,448],[191.77,436],[192.22,431],[192.66,428],[193.26,418],[193.81,411],[194.44,406],[195.05,402],[195.77,398],[196.18,394],[196.61,388],[197.07,384],[197.56,386],[197.84,383],[198.3,373],[198.82,368],[199.42,362],[200.02,357],[200.37,356],[200.94,360],[201.42,366],[201.92,370],[202.43,372],[203.02,377],[203.36,383],[203.81,388],[204.19,391],[204.67,396],[205.25,398],[205.54,399]];
-
-// ---- climbs (real gradient climbs) ----
-const CLIMBS = [
-  {key:'guryong', nm:'구룡령', start:37.2, end:44, dist:6.5, grad:5.87, gain:381, wkg:3.5, wkgRef:3.5, cat:'2', planMin:25, planSpd:15.6, intens:0.82, fz:'1차 보급소'},
-  {key:'jochim',  nm:'조침령', start:64, end:68, dist:4.2, grad:10.39, gain:436, wkg:3.3, wkgRef:3.3, cat:'2', planMin:28, planSpd:9, intens:0.90, fz:'최고각 10.4%'},
-  {key:'sseuri',  nm:'쓰리재', start:82, end:88, dist:6.4, grad:4.96, gain:317, wkg:3.2, wkgRef:3.2, cat:'2', planMin:24, planSpd:16, intens:0.80, fz:''},
-  {key:'mumyeong',nm:'무명고개', start:94, end:96, dist:1.7, grad:8.27, gain:141, wkg:null, wkgRef:3.3, cat:'3', planMin:10, planSpd:10.2, intens:0.85, fz:'짧고 가파름'},
-  {key:'hangye',  nm:'한계령', start:104, end:110, dist:5.8, grad:5.55, gain:322, wkg:2.9, wkgRef:2.9, cat:'2', planMin:25, planSpd:13.9, intens:0.80, fz:'스페셜 직후'},
-  {key:'reverse', nm:'역구룡령', start:142, end:163, dist:20.4, grad:4.18, gain:853, wkg:2.9, wkgRef:2.9, cat:'HC', planMin:84, planSpd:14.6, intens:0.70, fz:'승부처 · 3차 보급'},
-];
-// flats/descents (pack paced, plan minutes)
-const FLATS = [
-  {nm:'출발→살둔재(드래그)', dist:36.3, spd:35, min:36.3/35*60},
-  {nm:'구룡령→서림(다운힐)', dist:20, spd:51, min:20/51*60},
-  {nm:'조침령→진동2교(다운힐)', dist:13, spd:38, min:13/38*60},
-  {nm:'쓰리재→점봉산(다운힐)', dist:6, spd:43.5, min:6/43.5*60},
-  {nm:'무명고개→원진개', dist:8, spd:35.6, min:8/35.6*60},
-  {nm:'한계령→논화삼거리(다운힐)', dist:21.7, spd:43.4, min:21.7/43.4*60},
-  {nm:'논화→서림삼거리(완만업)', dist:11, spd:21.8, min:11/21.8*60},
-  {nm:'역구룡령→명개(다운힐)', dist:6.5, spd:43.3, min:6.5/43.3*60},
-  {nm:'명개→원당삼거리', dist:11.7, spd:36.9, min:11.7/36.9*60},
-  {nm:'원당→도착', dist:27.2, spd:36.3, min:27.2/36.3*60},
-];
-const FLAT_TOTAL_MIN = FLATS.reduce((a,b)=>a+b.min,0);
-
-// full waypoint list from the Team Inscyd timetable (Excel) for the per-segment guide
-const WAYPOINTS=[
- {nm:'출발 (상남면)',type:'start',cum:0.9,seg:0,grad:0,spd:0},
- {nm:'살둔재',type:'flat',cum:20.1,seg:19.2,grad:0.98,spd:35},
- {nm:'원당삼거리',type:'desc',cum:25.5,seg:5.4,grad:-0.91,spd:36},
- {nm:'명개삼거리 (구룡초입)',type:'flat',cum:37.2,seg:11.7,grad:0.83,spd:35.1},
- {nm:'구룡령 정상 · 1차보급',type:'climb',ckey:'guryong',cum:44,seg:6.5,grad:5.87,brk:5},
- {nm:'서림삼거리 (조침령시작)',type:'desc',cum:64,seg:20,grad:-4.17,spd:51},
- {nm:'조침령 정상',type:'climb',ckey:'jochim',cum:68,seg:4.2,grad:10.39},
- {nm:'진동2교 (쓰리재시작)',type:'desc',cum:82,seg:13,grad:-1.44,spd:38},
- {nm:'쓰리재 정상',type:'climb',ckey:'sseuri',cum:88,seg:6.4,grad:4.96},
- {nm:'점봉산상회 (무명시작)',type:'desc',cum:94,seg:6,grad:-6.02,spd:43.5},
- {nm:'무명고개 정상',type:'climb',ckey:'mumyeong',cum:96,seg:1.7,grad:8.27},
- {nm:'원진개 · 스페셜보급',type:'flat',cum:104,seg:8,grad:0.48,spd:35.6,brk:15},
- {nm:'필례한계령 정상',type:'climb',ckey:'hangye',cum:110,seg:5.8,grad:5.55},
- {nm:'논화삼거리',type:'desc',cum:131,seg:21.7,grad:-3.83,spd:43.4},
- {nm:'서림삼거리 (구룡령시작)',type:'flat',cum:142,seg:11,grad:1.06,spd:21.8},
- {nm:'구룡령 정상 · 3차보급',type:'climb',ckey:'reverse',cum:163,seg:20.4,grad:4.18,brk:5},
- {nm:'명개삼거리',type:'desc',cum:169,seg:6.5,grad:-5.91,spd:43.3},
- {nm:'원당삼거리',type:'desc',cum:181,seg:11.7,grad:-0.83,spd:36.9},
- {nm:'도착',type:'finish',cum:208,seg:27.2,grad:-0.54,spd:36.3},
-];
-
-// feed zones / cutoffs for markers
-const MARKERS=[
-  {km:44, label:'구룡령 보급', kind:'feed'},
-  {km:104, label:'스페셜보급', kind:'feed'},
-  {km:163, label:'역구룡 보급', kind:'feed'},
-  {km:80, label:'컷오프 12:00', kind:'cut'},
-  {km:147, label:'컷오프 15:40', kind:'cut'},
-];
-
-// ---- physics ----
-const G=9.81, CRR=0.005, RHO=1.15, CDA=0.36, BIKE=9;
-function speedFromPower(P, gradPct, mass){ // returns m/s
-  const s = gradPct/100;
-  let lo=0.3, hi=25;
-  for(let i=0;i<60;i++){
-    const v=(lo+hi)/2;
-    const need = v*(mass*G*(s+CRR)) + 0.5*RHO*CDA*v*v*v;
-    if(need>P) hi=v; else lo=v;
-  }
-  return (lo+hi)/2;
-}
-function powerFromSpeed(vms, gradPct, mass){
-  const s=gradPct/100;
-  return vms*(mass*G*(s+CRR)) + 0.5*RHO*CDA*vms*vms*vms;
-}
-function vo2mod(vo, climbMin){ // durability: higher vo2 lets you hold more, esp on long climbs
-  const base=(vo-64)*0.0045;
-  const lenW = climbMin>60?1.6 : climbMin>20?1.0 : 0.6;
-  return 1 + base*lenW;
-}
-function fmtT(min){ // minutes from 07:00 -> HH:MM
-  const tot=420+min; let h=Math.floor(tot/60), m=Math.round(tot%60);
-  if(m===60){h++;m=0;}
-  return (h)+':'+String(m).padStart(2,'0');
-}
-function fmtDur(min){ const h=Math.floor(min/60), m=Math.round(min%60); return h+':'+String(m).padStart(2,'0'); }
-
-// ====== PROFILE CANVAS ======
-const CANVAS_H={profMain:300,profSim:190,profPow:190};
-function drawProfile(canvas, opts={}){
-  const dpr=window.devicePixelRatio||1;
-  const W=canvas.clientWidth;
-  if(!W) return; // hidden (display:none) — skip until visible
-  const H=CANVAS_H[canvas.id]||220;
-  canvas.style.height=H+'px';
-  canvas.width=Math.round(W*dpr);
-  canvas.height=Math.round(H*dpr);
-  const ctx=canvas.getContext('2d');
-  ctx.setTransform(dpr,0,0,dpr,0,0);
-  ctx.clearRect(0,0,W,H);
-  const padL=38,padR=12,padT=14,padB=24;
-  const maxKm=208, minE=350, maxE=1050;
-  const x=km=>padL+(km/maxKm)*(W-padL-padR);
-  const y=e=>padT+(1-(e-minE)/(maxE-minE))*(H-padT-padB);
-  // climb shading
-  CLIMBS.forEach(c=>{
-    const col = opts.segColors&&opts.segColors[c.key];
-    ctx.fillStyle = col || 'rgba(229,72,77,0.16)';
-    ctx.fillRect(x(c.start),padT,x(c.end)-x(c.start),H-padT-padB);
-  });
-  // area under curve
-  ctx.beginPath(); ctx.moveTo(x(0),y(PROF[0][1]));
-  PROF.forEach(p=>ctx.lineTo(x(p[0]),y(p[1])));
-  ctx.lineTo(x(PROF[PROF.length-1][0]),H-padB); ctx.lineTo(x(0),H-padB); ctx.closePath();
-  const grad=ctx.createLinearGradient(0,padT,0,H-padB);
-  grad.addColorStop(0,'rgba(52,179,170,0.30)'); grad.addColorStop(1,'rgba(52,179,170,0.03)');
-  ctx.fillStyle=grad; ctx.fill();
-  // line
-  ctx.beginPath(); ctx.moveTo(x(0),y(PROF[0][1]));
-  PROF.forEach(p=>ctx.lineTo(x(p[0]),y(p[1])));
-  ctx.strokeStyle='#bfe7e2'; ctx.lineWidth=1.6; ctx.stroke();
-  // climb labels
-  ctx.textAlign='center';
-  CLIMBS.forEach(c=>{
-    const cx=x((c.start+c.end)/2);
-    ctx.fillStyle='#ECE7D9'; ctx.font='600 11px "Barlow Condensed"';
-    ctx.fillText(c.nm, cx, y(maxE)+2);
-    if(c.cat==='HC'||c.cat==='2'){ctx.fillStyle=c.cat==='HC'?'#E5484D':'#d18a5a';ctx.font='700 9px "Barlow Condensed"';ctx.fillText(c.cat==='HC'?'HC':'CAT2',cx,y(maxE)+14);}
-  });
-  // markers
-  MARKERS.forEach(m=>{
-    const mx=x(m.km);
-    if(m.kind==='cut'){
-      ctx.strokeStyle='rgba(242,181,68,0.55)'; ctx.setLineDash([4,4]); ctx.beginPath();
-      ctx.moveTo(mx,padT); ctx.lineTo(mx,H-padB); ctx.stroke(); ctx.setLineDash([]);
-      ctx.fillStyle='#F2B544'; ctx.font='600 9px "Barlow Condensed"'; ctx.textAlign='left';
-      ctx.fillText(m.label, mx+3, padT+9); ctx.textAlign='center';
-    } else {
-      ctx.fillStyle='#F2B544'; ctx.beginPath(); ctx.arc(mx,y(elevAt(m.km)),3.5,0,7); ctx.fill();
-    }
-  });
-  // axis
-  ctx.fillStyle='#90A4A1'; ctx.font='10px Barlow'; ctx.textAlign='right';
-  [400,600,800,1000].forEach(e=>{ctx.fillText(e+'m',padL-5,y(e)+3);});
-  ctx.textAlign='center';
-  [0,50,100,150,200].forEach(k=>{ctx.fillText(k+'km',x(k),H-7);});
-  // position marker
-  if(opts.markerKm!=null){
-    const mx=x(opts.markerKm), my=y(elevAt(opts.markerKm));
-    ctx.fillStyle='#fff'; ctx.beginPath(); ctx.arc(mx,my,5,0,7); ctx.fill();
-    ctx.strokeStyle='#E5484D'; ctx.lineWidth=2.5; ctx.stroke();
-  }
-}
-function elevAt(km){
-  for(let i=1;i<PROF.length;i++){ if(PROF[i][0]>=km){ const a=PROF[i-1],b=PROF[i]; const t=(km-a[0])/(b[0]-a[0]||1); return a[1]+(b[1]-a[1])*t; } }
-  return PROF[PROF.length-1][1];
-}
-
-// ====== PAGE 1: climb cards ======
-(function(){
-  const wrap=document.getElementById('climbCards');
-  const order=['guryong','jochim','sseuri','mumyeong','hangye','reverse'];
-  order.forEach(k=>{
-    const c=CLIMBS.find(x=>x.key===k);
-    const badge=c.cat==='HC'?'<span class="badge b-hc">HC</span>':'<span class="badge b-c2">CAT 2</span>';
-    wrap.innerHTML+=`<div class="climb"><div class="top"><div class="nm">${c.nm}</div>${badge}</div>
-      <div class="body">
-        <div class="mini"><div class="k">거리</div><div class="vv">${c.dist}<small style="font-size:12px"> km</small></div></div>
-        <div class="mini"><div class="k">평균경사</div><div class="vv">${c.grad}<small style="font-size:12px">%</small></div></div>
-        <div class="mini"><div class="k">상승</div><div class="vv">${c.gain}<small style="font-size:12px"> m</small></div></div>
-        <div class="mini"><div class="k">가이드</div><div class="vv">${c.wkg?c.wkg:'–'}<small style="font-size:12px"> w/kg</small></div></div>
-      </div>${c.fz?`<div class="note">${c.fz}</div>`:''}</div>`;
-  });
-})();
-
-// ====== PAGE 3: performance simulator ======
-function runPerf(){
-  const w=+w_.value, ftp=+ftp_.value, vo=+vo_.value, rest=+rest_.value, pack=+pack_.value/100;
-  let climbMin=0, rows='', wkgSum=0;
-  CLIMBS.forEach(c=>{
-    const intens=Math.min(1.05, c.intens*vo2mod(vo,c.planMin));
-    const P=ftp*intens;
-    const wkgRider=P/w; wkgSum+=wkgRider;
-    // plan-anchored: climb time scales inversely with w/kg vs the plan's guide w/kg
-    const min=c.planMin*(c.wkgRef/wkgRider);
-    climbMin+=min;
-    const spd=c.dist/(min/60);
-    rows+=`<tr class="clm"><td class="name">${c.nm} ${c.cat==='HC'?'<span class="badge b-hc">HC</span>':''}</td>
-      <td class="num">${c.dist}</td><td class="num">${c.grad}%</td>
-      <td class="num">${Math.round(P)}<small style="color:var(--muted)"> W</small></td>
-      <td class="num">${wkgRider.toFixed(2)}</td>
-      <td class="num">${Math.round(intens*100)}%</td>
-      <td class="num">${spd.toFixed(1)}</td>
-      <td class="num">${fmtDur(min)}</td></tr>`;
-  });
-  const flatMin=FLAT_TOTAL_MIN/pack;
-  const total=climbMin+flatMin+rest;
-  document.getElementById('finishBig').textContent=fmtT(total);
-  document.getElementById('totalBig').textContent=fmtDur(total);
-  document.getElementById('wkgAvg').textContent=(wkgSum/CLIMBS.length).toFixed(2);
-  const diff=total-480;
-  const vEl=document.getElementById('verdict');
-  if(total<=480){vEl.className='verdict v-ok';vEl.textContent='8시간 통과 · '+Math.abs(Math.round(diff))+'분 여유';}
-  else if(total<=495){vEl.className='verdict v-warn';vEl.textContent='목표까지 +'+Math.round(diff)+'분';}
-  else {vEl.className='verdict v-bad';vEl.textContent='8시간 초과 +'+Math.round(diff)+'분';}
-  document.getElementById('simTable').innerHTML=
-    '<thead><tr><th style="text-align:left">고개</th><th>거리km</th><th>경사</th><th>파워</th><th>w/kg</th><th>%FTP</th><th>속도</th><th>소요</th></tr></thead><tbody>'+rows+'</tbody>';
-  const seg={};
-  CLIMBS.forEach(c=>{const i=Math.min(1.05,c.intens*vo2mod(vo,c.planMin));const t=Math.max(0,Math.min(1,(i-0.70)/0.22));
-    const r=Math.round(52+(229-52)*t),g=Math.round(179+(72-179)*t),b=Math.round(170+(77-170)*t);
-    seg[c.key]=`rgba(${r},${g},${b},0.30)`;});
-  drawProfile(document.getElementById('profSim'),{segColors:seg});
-}
-
-// ====== PAGE 4: time -> power ======
-function runPow(){
-  const tgt=+tgt_.value, w=+w2_.value, ftp=+ftp2_.value, rest=+rest2_.value, pack=+pack2_.value/100;
-  document.getElementById('tgtOut').textContent=fmtDur(tgt);
-  const mass=w+BIKE;
-  let flatMin=0;
-  WAYPOINTS.forEach(wp=>{ if(wp.type==='flat'||wp.type==='desc'||wp.type==='finish') flatMin+=wp.seg/wp.spd*60; });
-  const flatAdj=flatMin/pack;
-  const planClimb=CLIMBS.reduce((a,b)=>a+b.planMin,0);
-  const budget=Math.max(1, tgt-flatAdj-rest);
-  document.getElementById('climbBudget').textContent=fmtDur(Math.max(0,tgt-flatAdj-rest));
-  let cum=0, climbRows='', fullRows='', anyBad=false, anyTight=false;
-  WAYPOINTS.forEach(wp=>{
-    if(wp.type==='start'){
-      fullRows+=`<tr class="brk"><td class="name">${wp.nm}</td><td class="num">${wp.cum}</td><td colspan="5">출발 · 07:00</td><td class="num" style="color:var(--gold)">${fmtT(0)}</td></tr>`;
-      return;
-    }
-    let segMin, spd, powCell, typeLabel, rowCls='';
-    if(wp.type==='climb'){
-      const c=CLIMBS.find(x=>x.key===wp.ckey);
-      segMin=budget*(c.planMin/planClimb);
-      const wkg=c.wkgRef*(c.planMin/segMin);
-      const P=wkg*w, pct=P/ftp*100;
-      spd=wp.seg/(segMin/60);
-      let badge,cls;
-      if(pct>105){badge='무리';cls='v-bad';anyBad=true;} else if(pct>95){badge='빡셈';cls='v-warn';anyTight=true;} else if(pct<62){badge='여유';cls='v-ok';} else{badge='적정';cls='v-ok';}
-      powCell=`${Math.round(P)} W <small style="color:var(--muted)">${Math.round(pct)}%</small>`;
-      typeLabel='<span class="badge b-hc">업힐</span>';
-      rowCls='clm';
-      climbRows+=`<tr class="clm"><td class="name">${c.nm} ${c.cat==='HC'?'<span class="badge b-hc">HC</span>':''}</td><td class="num">${fmtDur(segMin)}</td><td class="num">${spd.toFixed(1)}</td><td class="num">${Math.round(P)}<small style="color:var(--muted)"> W</small></td><td class="num">${wkg.toFixed(2)}</td><td class="num">${Math.round(pct)}%</td><td><span class="verdict ${cls}" style="font-size:11px;padding:2px 9px">${badge}</span></td></tr>`;
-    } else {
-      spd=wp.spd*pack;
-      segMin=wp.seg/spd*60;
-      if(wp.grad<-1.2){ powCell='<span style="color:var(--muted)">코스팅</span>'; typeLabel='<span class="badge b-flat" style="background:#23474a;color:var(--sky)">다운힐</span>'; }
-      else { const P=Math.max(0,powerFromSpeed(spd/3.6,wp.grad,mass)); powCell=`<span style="color:var(--teal)">~${Math.round(P)} W</span>`; typeLabel='<span class="badge b-flat">평지</span>'; }
-    }
-    cum+=segMin;
-    fullRows+=`<tr class="${rowCls}"><td class="name">${wp.nm}</td><td class="num">${wp.cum}</td><td class="num">${wp.grad}%</td><td>${typeLabel}</td><td class="num">${spd.toFixed(1)}</td><td class="num">${powCell}</td><td class="num">${fmtDur(segMin)}</td><td class="num" style="color:var(--gold)">${fmtT(cum)}</td></tr>`;
-    if(wp.brk){ const bmin=rest*(wp.brk/25); cum+=bmin; fullRows+=`<tr class="brk"><td class="name">— 휴식 ${Math.round(bmin)}분 —</td><td colspan="6">정비 / 보급</td><td class="num" style="color:var(--gold)">${fmtT(cum)}</td></tr>`; }
-  });
-  document.getElementById('powTable').innerHTML='<thead><tr><th style="text-align:left">고개</th><th>배정시간</th><th>필요속도</th><th>필요파워</th><th>w/kg</th><th>%FTP</th><th>판정</th></tr></thead><tbody>'+climbRows+'</tbody>';
-  document.getElementById('powFullTable').innerHTML='<thead><tr><th style="text-align:left">웨이포인트</th><th>누적km</th><th>경사</th><th>유형</th><th>속도</th><th>필요파워</th><th>소요</th><th>통과(목표)</th></tr></thead><tbody>'+fullRows+'</tbody>';
-  const fb=document.getElementById('feasBadge');
-  if(tgt-flatAdj-rest<=0||anyBad){fb.className='verdict v-bad';fb.textContent='이 시간엔 무리한 구간 있음';}
-  else if(anyTight){fb.className='verdict v-warn';fb.textContent='빡세지만 가능';}
-  else{fb.className='verdict v-ok';fb.textContent='달성 가능한 페이스';}
-  drawProfile(document.getElementById('profPow'),{});
-}
-
-// ====== PAGE 5: plan table ======
-const PLAN=[
-  ['출발(상남면)','start',0.9,'-',null,'-',null,'07:00','07:08'],
-  ['살둔재','flat',20.1,'0.98%',19.2,35,3.6,'07:33',null],
-  ['원당삼거리','flat',25.5,'-0.91%',5.4,36,null,'07:42',null],
-  ['명개삼거리(구룡초입)','flat',37.2,'0.83%',11.7,35.1,null,'08:02',null],
-  ['구룡령정상 · 1차보급','climb',44,'5.87%',6.5,15.6,3.5,'08:27','08:32'],
-  ['Break 5분','brk',null,null,null,null,null,'08:32',null],
-  ['서림삼거리(조침령시작)','flat',64,'-4.17%',20,51,null,'08:56',null],
-  ['조침령정상','climb',68,'10.39%',4.2,9,3.3,'09:24','09:36'],
-  ['진동2교(쓰리재시작)','flat',82,'-1.44%',13,38,null,'09:45',null],
-  ['쓰리재정상','climb',88,'4.96%',6.4,16,3.2,'10:09','10:19'],
-  ['점봉산상회(무명고개시작)','flat',94,'-6.02%',6,43.5,null,'10:17',null],
-  ['무명고개정상','climb',96,'8.27%',1.7,10.2,null,'10:27',null],
-  ['원진개 · 스페셜보급','flat',104,'0.48%',8,35.6,null,'10:41',null],
-  ['Break 15분','brk',null,null,null,null,null,'10:53',null],
-  ['필례한계령정상','climb',110,'5.55%',5.8,13.9,2.9,'11:18','11:35'],
-  ['논화삼거리','flat',131,'-3.83%',21.7,43.4,null,'11:48',null],
-  ['서림삼거리(구룡령시작)','flat',142,'1.06%',11,21.8,null,'12:18',null],
-  ['구룡령정상 · 3차보급','climb',163,'4.18%',20.4,14.6,2.9,'13:42','13:47'],
-  ['Break 5분','brk',null,null,null,null,null,'13:47',null],
-  ['명개삼거리','flat',169,'-5.91%',6.5,43.3,null,'13:56',null],
-  ['원당삼거리','flat',181,'-0.83%',11.7,36.9,null,'14:15',null],
-  ['도착','fin',208,'-0.54%',27.2,36.3,null,'15:00',null],
-];
-function buildPlan(){
-  const w=+w3_.value;
-  let rows='';
-  PLAN.forEach(r=>{
-    const [nm,kind,cum,grad,seg,spd,wkg,t8,t24]=r;
-    let cls=kind==='climb'?'clm':kind==='brk'?'brk':kind==='fin'?'fin':'';
-    if(kind==='brk'){rows+=`<tr class="brk"><td class="name">${nm}</td><td colspan="5">— 정비 / 보급 —</td><td class="num">${t8}</td><td class="num">${t24||''}</td></tr>`;return;}
-    const watt = wkg? Math.round(wkg*w)+' W':'';
-    rows+=`<tr class="${cls}"><td class="name">${nm}</td>
-      <td class="num">${cum}</td><td class="num">${grad}</td>
-      <td class="num">${seg!=null?seg:''}</td>
-      <td class="num">${spd!=null?spd:''}</td>
-      <td class="num">${wkg?wkg+'<small style="color:var(--muted)"> ('+watt+')</small>':''}</td>
-      <td class="num" style="color:var(--gold)">${t8}</td>
-      <td class="num" style="color:var(--muted)">${t24||''}</td></tr>`;
-  });
-  document.getElementById('planTable').innerHTML=
-    '<thead><tr><th style="text-align:left">웨이포인트</th><th>누적km</th><th>경사</th><th>구간km</th><th>평속</th><th>가이드 w/kg (예상W)</th><th>통과(8h)</th><th>2024 실제</th></tr></thead><tbody>'+rows+'</tbody>';
-}
-
-// ====== wiring ======
-const $=id=>document.getElementById(id);
-const w_=$('w'),ftp_=$('ftp'),vo_=$('vo'),rest_=$('rest'),pack_=$('pack');
-const tgt_=$('tgt'),w2_=$('w2'),ftp2_=$('ftp2'),rest2_=$('rest2'),pack2_=$('pack2');
-const w3_=$('w3');
-function bind(el,out,fmt){el.addEventListener('input',()=>{if(out)$(out).textContent=fmt?fmt(el.value):el.value;});}
-bind(w_,'wOut');bind(ftp_,'ftpOut');bind(vo_,'voOut');bind(rest_,'restOut');bind(pack_,'packOut');
-[w_,ftp_,vo_,rest_,pack_].forEach(e=>e.addEventListener('input',runPerf));
-bind(tgt_,'tgtOut',v=>fmtDur(+v));bind(w2_,'w2Out');bind(ftp2_,'ftp2Out');bind(rest2_,'rest2Out');bind(pack2_,'pack2Out');
-[tgt_,w2_,ftp2_,rest2_,pack2_].forEach(e=>e.addEventListener('input',runPow));
-bind(w3_,'w3Out');w3_.addEventListener('input',buildPlan);
-
-// tabs
-const tabs=document.querySelectorAll('#tabs button'), pages=document.querySelectorAll('section.page');
-tabs.forEach(b=>b.addEventListener('click',()=>{
-  tabs.forEach(x=>x.classList.remove('active'));pages.forEach(x=>x.classList.remove('active'));
-  b.classList.add('active');pages[+b.dataset.p].classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
-  requestAnimationFrame(()=>requestAnimationFrame(redraw));
-}));
-function redraw(){
-  drawProfile($('profMain'),{});
-  runPerf();runPow();
-}
-let rT;
-window.addEventListener('resize',()=>{clearTimeout(rT);rT=setTimeout(redraw,120);});
-window.addEventListener('load',()=>requestAnimationFrame(redraw));
-if(document.fonts&&document.fonts.ready){document.fonts.ready.then(redraw);}
-buildPlan();
-requestAnimationFrame(()=>requestAnimationFrame(redraw));
-</script>
 </body>
 </html>
