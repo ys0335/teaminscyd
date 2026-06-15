@@ -356,18 +356,18 @@ ul.clean li b{color:var(--gold)}
       <div class="ctrl"><label>출발 시각 <b><span id="startOut">07:00</span></b></label><input type="time" id="start" value="07:00" step="60"></div>
       <div class="ctrl"><label>예상 파워 환산 체중 <b><span id="w3Out">68</span> kg</b></label><input type="range" id="w3" min="50" max="100" step="0.5" value="68"></div>
     </div>
-    <div style="font-size:12px;color:var(--muted);margin-top:10px">출발 시각을 바꾸면 플랜과 2024 실제가 <b>모두 그 출발선 기준</b>으로 정렬돼 같은 조건에서 비교됩니다(사람 많아 정시 출발이 어려울 때). 2024 열의 <b>±분</b>은 같은 구간을 플랜보다 빨리 통과했으면 <span style="color:var(--teal)">−(앞섬)</span>, 늦었으면 <span style="color:var(--kom)">+(뒤처짐)</span>입니다. w/kg 가이드는 위 체중 기준 W로 환산합니다.</div>
+    <div style="font-size:12px;color:var(--muted);margin-top:10px">출발 시각을 바꾸면 플랜·2024·2025가 <b>모두 그 출발선 기준</b>으로 정렬돼 같은 조건에서 비교됩니다(사람 많아 정시 출발이 어려울 때). <b>±분</b>은 같은 구간을 플랜보다 빨리 통과했으면 <span style="color:var(--teal)">−(앞섬)</span>, 늦었으면 <span style="color:var(--kom)">+(뒤처짐)</span>입니다. w/kg 가이드는 위 체중 기준 W로 환산합니다.</div>
   </div>
 
   <div class="tbl-scroll"><table id="planTable"></table></div>
 
   <div class="grid g4" style="margin-top:18px">
-    <div class="stat"><div class="k">예상 완주</div><div class="v" id="planFinish">15:00</div></div>
-    <div class="stat"><div class="k">2024 실제</div><div class="v">15:07</div></div>
-    <div class="stat"><div class="k">계획 총 휴식</div><div class="v">25<small> 분</small></div></div>
-    <div class="stat"><div class="k">2024 휴식</div><div class="v">~24<small> 분</small></div></div>
+    <div class="stat"><div class="k">예상 도착 (입력 출발 기준)</div><div class="v" id="planFinish">15:00</div></div>
+    <div class="stat"><div class="k">플랜 넷타임</div><div class="v">8:00</div></div>
+    <div class="stat"><div class="k">2024 넷타임</div><div class="v" style="color:var(--teal)">7:59<small> 성공</small></div></div>
+    <div class="stat"><div class="k">2025 넷타임</div><div class="v" style="color:var(--kom)">8:06<small> 실패</small></div></div>
   </div>
-  <p class="src">출처: 「2025 설악그란폰도 Team Inscyd」시간표 + 2024 실주행 FIT. 2024 통과시각은 FIT 거리-시간 곡선에서 웨이포인트별로 산출(정상 통과는 팀 기록과 일치). 원진개·스페셜보급 실측은 스페셜 휴식 11.5분을 제외한 통과 기록. 두 열 모두 입력 출발 시각 기준으로 정렬.</p>
+  <p class="src">출처: 「2025 설악그란폰도 Team Inscyd」시간표 + 2024·2025 실주행 FIT. 통과시각은 FIT 거리-시간 곡선에서 웨이포인트별로 산출(2024 정상 통과는 팀 기록과 일치, 2025는 GPS 피드존 앵커링). 원진개·스페셜보급 실측은 스페셜 휴식(2024 11.5분·2025 14.2분)을 제외한 통과 기록. 세 열 모두 입력 출발 시각 기준으로 정렬.</p>
 </div></section>
 
 <div class="wrap foot">
@@ -639,62 +639,69 @@ function runPow(){
 
 // ====== PAGE 5: plan table ======
 const ACTUAL_START='07:08'; // 2024 FIT start
+const ACTUAL_START_2025='07:12'; // 2025 FIT start
 const PLAN=[
-  ['출발(상남면)','start',0.9,'-',null,'-',null,'07:00','07:08'],
-  ['살둔재','flat',20.1,'0.98%',19.2,35,3.6,'07:33','07:40'],
-  ['원당삼거리','flat',25.5,'-0.91%',5.4,36,null,'07:42','07:51'],
-  ['명개삼거리(구룡초입)','flat',37.2,'0.83%',11.7,35.1,null,'08:02','08:09'],
-  ['구룡령정상 · 1차보급','climb',44,'5.87%',6.5,15.6,3.5,'08:27','08:32'],
-  ['Break 5분','brk',null,null,null,null,null,'08:32',null],
-  ['서림삼거리(조침령시작)','flat',64,'-4.17%',20,51,null,'08:56','09:11'],
-  ['조침령정상','climb',68,'10.39%',4.2,9,3.3,'09:24','09:36'],
-  ['진동2교(쓰리재시작)','flat',82,'-1.44%',13,38,null,'09:45','09:58'],
-  ['쓰리재정상','climb',88,'4.96%',6.4,16,3.2,'10:09','10:19'],
-  ['점봉산상회(무명고개시작)','flat',94,'-6.02%',6,43.5,null,'10:17','10:31'],
-  ['무명고개정상','climb',96,'8.27%',1.7,10.2,null,'10:27','10:40'],
-  ['원진개 · 스페셜보급','flat',104,'0.48%',8,35.6,null,'10:41','10:59'],
-  ['Break 15분','brk',null,null,null,null,null,'10:53',null],
-  ['필례한계령정상','climb',110,'5.55%',5.8,13.9,2.9,'11:18','11:35'],
-  ['논화삼거리','flat',131,'-3.83%',21.7,43.4,null,'11:48','12:03'],
-  ['서림삼거리(구룡령시작)','flat',142,'1.06%',11,21.8,null,'12:18','12:30'],
-  ['구룡령정상 · 3차보급','climb',163,'4.18%',20.4,14.6,2.9,'13:42','13:47'],
-  ['Break 5분','brk',null,null,null,null,null,'13:47',null],
-  ['명개삼거리','flat',169,'-5.91%',6.5,43.3,null,'13:56','14:00'],
-  ['원당삼거리','flat',181,'-0.83%',11.7,36.9,null,'14:15','14:18'],
-  ['도착','fin',208,'-0.54%',27.2,36.3,null,'15:00','15:07'],
+  ['출발(상남면)','start',0.9,'-',null,'-',null,'07:00','07:08','07:12'],
+  ['살둔재','flat',20.1,'0.98%',19.2,35,3.6,'07:33','07:40','07:51'],
+  ['원당삼거리','flat',25.5,'-0.91%',5.4,36,null,'07:42','07:51','08:01'],
+  ['명개삼거리(구룡초입)','flat',37.2,'0.83%',11.7,35.1,null,'08:02','08:09','08:26'],
+  ['구룡령정상 · 1차보급','climb',44,'5.87%',6.5,15.6,3.5,'08:27','08:32','08:49'],
+  ['Break 5분','brk',null,null,null,null,null,'08:32',null,null],
+  ['서림삼거리(조침령시작)','flat',64,'-4.17%',20,51,null,'08:56','09:11','09:25'],
+  ['조침령정상','climb',68,'10.39%',4.2,9,3.3,'09:24','09:36','09:44'],
+  ['진동2교(쓰리재시작)','flat',82,'-1.44%',13,38,null,'09:45','09:58','10:09'],
+  ['쓰리재정상','climb',88,'4.96%',6.4,16,3.2,'10:09','10:19','10:29'],
+  ['점봉산상회(무명고개시작)','flat',94,'-6.02%',6,43.5,null,'10:17','10:31','10:38'],
+  ['무명고개정상','climb',96,'8.27%',1.7,10.2,null,'10:27','10:40','10:44'],
+  ['원진개 · 스페셜보급','flat',104,'0.48%',8,35.6,null,'10:41','10:59','10:59'],
+  ['Break 15분','brk',null,null,null,null,null,'10:53',null,null],
+  ['필례한계령정상','climb',110,'5.55%',5.8,13.9,2.9,'11:18','11:35','11:42'],
+  ['논화삼거리','flat',131,'-3.83%',21.7,43.4,null,'11:48','12:03','12:17'],
+  ['서림삼거리(구룡령시작)','flat',142,'1.06%',11,21.8,null,'12:18','12:30','12:49'],
+  ['구룡령정상 · 3차보급','climb',163,'4.18%',20.4,14.6,2.9,'13:42','13:47','14:02'],
+  ['Break 5분','brk',null,null,null,null,null,'13:47',null,null],
+  ['명개삼거리','flat',169,'-5.91%',6.5,43.3,null,'13:56','14:00','14:15'],
+  ['원당삼거리','flat',181,'-0.83%',11.7,36.9,null,'14:15','14:18','14:34'],
+  ['도착','fin',208,'-0.54%',27.2,36.3,null,'15:00','15:07','15:18'],
 ];
 function shiftTime(hhmm, off){
   const p=hhmm.split(':'); let t=(+p[0])*60+(+p[1])+off;
   t=((t%1440)+1440)%1440;
   return String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0');
 }
+function hm(s){const p=s.split(':');return (+p[0])*60+(+p[1]);}
+function gapStr(t8,ta,asMin){ if(!ta) return ''; const d=(hm(ta)-asMin)-(hm(t8)-420); if(d===0) return ''; return `<small style="color:${d<0?'var(--teal)':'var(--kom)'}"> ${d>0?'+':''}${d}</small>`; }
 function buildPlan(){
   const w=+w3_.value;
   const sv=(start_&&start_.value)?start_.value:'07:00';
-  const sp=sv.split(':'); const startMin=(+sp[0])*60+(+sp[1]);
+  const startMin=hm(sv);
   const off=startMin-420;                 // plan vs 07:00
-  const ap=ACTUAL_START.split(':'); const off24=startMin-((+ap[0])*60+(+ap[1])); // 2024 vs its own start
+  const off24=startMin-hm(ACTUAL_START);  // 2024 vs its own start
+  const off25=startMin-hm(ACTUAL_START_2025); // 2025 vs its own start
   document.getElementById('startOut').textContent=sv;
   let rows='';
   PLAN.forEach(r=>{
-    const [nm,kind,cum,grad,seg,spd,wkg,t8,t24]=r;
+    const [nm,kind,cum,grad,seg,spd,wkg,t8,t24,t25]=r;
     const pass=shiftTime(t8,off);
     const p24=t24?shiftTime(t24,off24):'';
+    const p25=t25?shiftTime(t25,off25):'';
     let cls=kind==='climb'?'clm':kind==='brk'?'brk':kind==='fin'?'fin':'';
-    if(kind==='brk'){rows+=`<tr class="brk"><td class="name">${nm}</td><td colspan="5">— 정비 / 보급 —</td><td class="num">${pass}</td><td class="num">${p24}</td></tr>`;return;}
+    if(kind==='brk'){rows+=`<tr class="brk"><td class="name">${nm}</td><td colspan="5">— 정비 / 보급 —</td><td class="num">${pass}</td><td class="num">${p24}</td><td class="num">${p25}</td></tr>`;return;}
     if(kind==='fin'){document.getElementById('planFinish').textContent=pass;}
     const watt = wkg? Math.round(wkg*w)+' W':'';
-    const gap = (t24 && kind!=='start')? (()=>{const e8=parseInt(t8.split(':')[0])*60+parseInt(t8.split(':')[1])-420;const e24=parseInt(t24.split(':')[0])*60+parseInt(t24.split(':')[1])-428;const d=e24-e8;return d===0?'':`<small style="color:${d<0?'var(--teal)':'var(--kom)'}"> ${d>0?'+':''}${d}</small>`;})():'';
+    const g24=(kind!=='start')?gapStr(t8,t24,hm(ACTUAL_START)):'';
+    const g25=(kind!=='start')?gapStr(t8,t25,hm(ACTUAL_START_2025)):'';
     rows+=`<tr class="${cls}"><td class="name">${nm}</td>
       <td class="num">${cum}</td><td class="num">${grad}</td>
       <td class="num">${seg!=null?seg:''}</td>
       <td class="num">${spd!=null?spd:''}</td>
       <td class="num">${wkg?wkg+'<small style="color:var(--muted)"> ('+watt+')</small>':''}</td>
       <td class="num" style="color:var(--gold)">${pass}</td>
-      <td class="num" style="color:var(--muted)">${p24}${gap}</td></tr>`;
+      <td class="num" style="color:var(--muted)">${p24}${g24}</td>
+      <td class="num" style="color:var(--muted)">${p25}${g25}</td></tr>`;
   });
   document.getElementById('planTable').innerHTML=
-    '<thead><tr><th style="text-align:left">웨이포인트</th><th>누적km</th><th>경사</th><th>구간km</th><th>평속</th><th>가이드 w/kg (예상W)</th><th>통과(플랜)</th><th>2024 실제 (±분)</th></tr></thead><tbody>'+rows+'</tbody>';
+    '<thead><tr><th style="text-align:left">웨이포인트</th><th>누적km</th><th>경사</th><th>구간km</th><th>평속</th><th>가이드 w/kg (예상W)</th><th>통과(플랜)</th><th>2024 실제 (±분)</th><th>2025 실제 (±분)</th></tr></thead><tbody>'+rows+'</tbody>';
 }
 
 // ====== wiring ======
